@@ -1,0 +1,19 @@
+
+<input [(ngModel)]="msg" class="form-control" />
+
+<button (click)="SendMsg()" class="btn btn-outline-success"  [disabled]="disconnected">Send Data</button>
+
+<input type="file" [disabled]="disconnected" (change)="fileSelect($event)" />
+
+<hr />
+<ul>
+    <li *ngFor="let message of Messages">
+        {{message.UserName}} :
+        <span *ngIf="!message.IsImage">
+            {{message.Text }}
+        </span>
+        <div *ngIf="message.IsImage">
+            <img [src]="message.Text" width="240px" />
+        </div>
+    </li>
+</ul>
